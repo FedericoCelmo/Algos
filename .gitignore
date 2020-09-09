@@ -25,3 +25,12 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+/public/
+/Gemfile.lock
+/db/schema.rb
+/.ruby-version
+/test/
+.idea
+/config/database.yml
+/config/secrets.yml
