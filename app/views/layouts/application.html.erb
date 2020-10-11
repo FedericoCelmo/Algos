@@ -1,15 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ProyectoServicioSocial</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title> <%= yield :title %></title>
+  <%= favicon_link_tag 'icon.png' %> 
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield :head %>
+  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<body>
 
-  <body>
+
+<div class="headerMenu">
+  <div class="slide-down-logo-menu">
+    <a href="#" title="Inicio">     
+      <img src="<%= asset_path 'logo.png' %>" width="45" alt="" class="header-logo">
+     
+      <img src="<%= asset_path 'logo.png' %>" width="45" alt="" class="header-logo-mobile">
+    </a>
+  </div>
+
+  <div class="hamburger-menu" title="Expandir/Contraer">
+    <div class="hamburger">
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+    </div>
+    <p>Menu</p>
+  </div>
+  
+
+
+
+
+  
+</div>
+
+<div class="slide-down-menu">
+
+  <div id="contenedorSubMenu" >
+    <ul>
+      <h2 id="act" class ="active" title="Página de inicio"><i class="fa fa-home" aria-hidden="true"></i>Home</h2>
+      <li><a>Example</a></li>
+    </ul>
+    <ul>
+      <h2 id="act" title="Mostrar algoritmos disponibles"><i class="fa fa-list-ol" aria-hidden="true"></i>Algoritmos</h2>
+      <li><a>Bubble Sort</a></li>
+      <li><a>Shellsort</a></li>
+      <li><a>Insertion Sort</a></li>
+      <li><a>Mergesort</a></li>
+      <li><a>Quicksort</a></li>
+      <li><a>Mezcla Directa</a></li>
+      <li><a>Mezcla Equilibrada</a></li>
+    </ul>
+    <ul>
+      <h2 id="act" title="Acerca de, Ayuda, Contacto"><i class="fa fa-info-circle" aria-hidden="true"></i>About</h2>     
+    </ul>
+  </div>
+  
+</div>
+<script>
+$('ul.#act').click(function(){
+    $('ul.#act').removeClass("active");
+    $(this).addClass("active");
+});
+</script>
+<script>
+  new menu();
+</script>
+
+
+<div id="back-image">
+  <div id="contenido">
     <%= yield %>
-  </body>
+  </div>
+  
+</div>
+
+<!--Footer-->
+<div class="footer" title="Footer">
+  <div id="button"></div>
+    <div id="container">
+      <div id="cont">
+        <div class="footer_center">
+	        <h3>Unidad Multidisciplinaria Tizimín ©</h3>
+        </div>
+      </div>
+    </div>
+</div>
+
+</body>
+
 </html>

@@ -1,31 +1,4 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
-//= require_tree .
-//= require jquery 
-//= require jquery_ujs 
-//= require app
-//= require home
-
-console.log('Hello from application.js')
-function menu() {
-
-  
-
-  console.log('Se ha ejecutado menu')
-  $(document).on('turbolinks:load',function() {
+$(document).on('turbolinks:load',function() {
  
     checkDivWidth960px();
     checkDivWidth560px();
@@ -33,7 +6,34 @@ function menu() {
   });
   
   
-  $(".slide-down-menu").hide(); 
+  $(".slide-down-location-menu, .paisley-central-info, .ralston-info, .slide-down-menu").hide();
+  
+  $(".paisley-central-header").click(function() {
+    
+    if ( $(".paisley-central-info").is(":visible")) {
+      
+      $(".slide-down-location-menu").slideUp(); 
+    }
+     
+    else {
+      $(".ralston-info").hide();
+      $(".paisley-central-info").show();
+      $(".slide-down-location-menu").slideDown();}
+  });
+  
+  $(".ralston-header").click(function() {
+    
+    if ( $(".ralston-info").is(":visible")) {
+      
+      $(".slide-down-location-menu").slideUp(); 
+    }
+     
+    else {
+      $(".paisley-central-info").hide();
+      $(".ralston-info").show();
+      $(".slide-down-location-menu").slideDown();}
+  });
+  
   
   $(".header-logo-hidden").hide();
   $(".header-logo").mouseenter(function() {
@@ -63,7 +63,9 @@ function menu() {
     $(".slide-down-menu").slideToggle();
     $(".two").toggleClass("hide", 300);
   });
-   
+  
+  
+  
   
   //========== For Media Queries ==========
   
@@ -98,8 +100,29 @@ function menu() {
       });
     }
   }
-   
-}
+  
+  
+  function checkDivWidth560px(){
+    if ($(".locations-header").width() < 560 ){
+  
+      $(".locations-header a:nth-child(1)").click(function(){
+        $(".locations-header a:nth-child(2)").removeClass("ralston-header-mobile-clicked");
+        $(".locations-header a:nth-child(2)").addClass("ralston-header");
+        $(this).toggleClass("paisley-central-header");
+        $(this).toggleClass("paisley-central-header-mobile-clicked");
+      });
+      $(".locations-header a:nth-child(2)").click(function(){
+        $(".locations-header a:nth-child(1)").removeClass("paisley-central-header-mobile-clicked");
+        $(".locations-header a:nth-child(1)").addClass("paisley-central-header");
+        $(this).toggleClass("ralston-header");
+        $(this).toggleClass("ralston-header-mobile-clicked");
+      });
+    }
+  }
+  
+  
+  
+  
   
   
   
