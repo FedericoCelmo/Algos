@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> <%= yield :title %></title>
-  <%= favicon_link_tag 'icon.png' %> 
+  <title> Algos</title>
+  <%= favicon_link_tag 'icon.png' %>
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= yield :head %>
-  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag params[:controller], 'data-turbolinks-track' => true if ::Rails.application.assets.find_asset("#{params[:controller]}.js") %>
+  <%= stylesheet_link_tag "application", params[:controller], :media => "all", 'data-turbolinks-track' => true if ::Rails.application.assets.find_asset("#{params[:controller]}.css") %>
+
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 </head>
 
 <body>
-
-
 <div class="headerMenu">
   <div class="slide-down-logo-menu">
-    <a href="#" title="Inicio">     
+    <a href="<%= root_path %>" title="Inicio">
       <img src="<%= asset_path 'logo.png' %>" width="45" alt="" class="header-logo">
-     
       <img src="<%= asset_path 'logo.png' %>" width="45" alt="" class="header-logo-mobile">
     </a>
   </div>
@@ -30,25 +33,19 @@
       <div class="two"></div>
       <div class="three"></div>
     </div>
-    <p>Menu</p>
+    <p>Menú</p>
   </div>
-  
-
-
-
-
-  
 </div>
 
+<!--
 <div class="slide-down-menu">
-
-  <div id="contenedorSubMenu" >
+  <div id="contenedorSubMenu">
     <ul>
-      <h2 id="act" class ="active" title="Página de inicio"><i class="fa fa-home" aria-hidden="true"></i>Home</h2>
+      <h2 class="act active" title="Página de inicio"><i class="fa fa-home" aria-hidden="true"></i>Home</h2>
       <li><a>Example</a></li>
     </ul>
     <ul>
-      <h2 id="act" title="Mostrar algoritmos disponibles"><i class="fa fa-list-ol" aria-hidden="true"></i>Algoritmos</h2>
+      <h2 class="act" title="Mostrar algoritmos disponibles"><i class="fa fa-list-ol" aria-hidden="true"></i>Algoritmos</h2>
       <li><a>Bubble Sort</a></li>
       <li><a>Shellsort</a></li>
       <li><a>Insertion Sort</a></li>
@@ -58,27 +55,41 @@
       <li><a>Mezcla Equilibrada</a></li>
     </ul>
     <ul>
-      <h2 id="act" title="Acerca de, Ayuda, Contacto"><i class="fa fa-info-circle" aria-hidden="true"></i>About</h2>     
+      <h2 class="act" title="Acerca de, Ayuda, Contacto"><i class="fa fa-info-circle" aria-hidden="true"></i>About</h2>
     </ul>
   </div>
-  
 </div>
-<script>
-$('ul.#act').click(function(){
-    $('ul.#act').removeClass("active");
-    $(this).addClass("active");
-});
-</script>
-<script>
-  new menu();
-</script>
+-->
 
-
-<div id="back-image">
-  <div id="contenido">
-    <%= yield %>
+<div class="slide-down-menu">
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-4 col-lg-4 h-100 p-0">
+        <a href="<%= root_url %>" class="w-100 h-100 d-flex align-items-center justify-content-center section">
+          <h2 class="text-center"><i class="fa fa-home" aria-hidden="true"></i>Home</h2>
+        </a>
+      </div>
+      <div class="col-4 col-lg-4 h-100 p-0 custom-dropdown">
+        <a href="javascript:void(0)" class="w-100 h-100 d-flex align-items-center justify-content-center section">
+          <h2 class="text-center"><i class="fa fa-list-ol" aria-hidden="true"></i>Algoritmos</h2>
+        </a>
+        <div class="custom-dropdown-content">
+          <% get_algorithms.each do |algorithm| %>
+            <a href="<%= algorithm_path(algorithm.id) %>"><%= algorithm.name %></a>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-4 col-lg-4 h-100 p-0">
+        <a href="<%= about_us_path %>" class="w-100 h-100 d-flex align-items-center justify-content-center section">
+          <h2 class="text-center"><i class="fa fa-info-circle" aria-hidden="true"></i>Sobre nosotros</h2>
+        </a>
+      </div>
+    </div>
   </div>
-  
+</div>
+
+<div class="container-fluid mt-4">
+  <%= yield %>
 </div>
 
 <!--Footer-->
@@ -92,7 +103,5 @@ $('ul.#act').click(function(){
       </div>
     </div>
 </div>
-
 </body>
-
 </html>

@@ -1,0 +1,7 @@
+Algorithm.create!(id: 1, name: 'Bubble Sort')
+Algorithm.create!(id: 2, name: 'Shellsort')
+Algorithm.create!(id: 3, name: 'Insertion Sort')
+Algorithm.create!(id: 4, name: 'Mergesort')
+Algorithm.create!(id: 5, name: 'Quicksort')
+Algorithm.create!(id: 6, name: 'Mezcla Directa')
+Algorithm.create!(id: 7, name: 'Mezcla Equilibrada')

@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load',function() {
  
-    checkDivWidth960px();
-    checkDivWidth560px();
-    $(window).resize(checkDivWidth960px, checkDivWidth560px);
+    // checkDivWidth960px();
+    // checkDivWidth560px();
+    // $(window).resize(checkDivWidth960px, checkDivWidth560px);
   });
   
   
