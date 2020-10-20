@@ -1,3 +1,175 @@
 // Place all the styles related to the AlgorithmsController controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*Settings generales*/
+body {
+    min-height: 100vh;  
+}
+.container-fluid h1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: hsla(0, 0%, 0%, .9);
+    font: normal 50px Varela Round, sans-serif;   
+    left: 0;
+    letter-spacing: 5px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    animation: move linear 2000ms infinite; 
+    z-index: -10;
+}
+
+@keyframes move {/*Animación del nombre del algoritmo*/
+    0% {
+      text-shadow:
+        4px -4px 0 hsla(0, 100%, 50%, 1), 
+        3px -3px 0 hsla(0, 100%, 50%, 1), 
+        2px -2px 0 hsla(0, 100%, 50%, 1), 
+        1px -1px 0 hsla(0, 100%, 50%, 1),
+        -4px 4px 0 hsla(180, 100%, 50%, 1), 
+        -3px 3px 0 hsla(180, 100%, 50%, 1), 
+        -2px 2px 0 hsla(180, 100%, 50%, 1), 
+        -1px 1px 0 hsla(180, 100%, 50%, 1);
+    }
+    25% {    
+      text-shadow:      
+        -4px -4px 0 hsla(180, 100%, 50%, 1), 
+        -3px -3px 0 hsla(180, 100%, 50%, 1), 
+        -2px -2px 0 hsla(180, 100%, 50%, 1), 
+        -1px -1px 0 hsla(180, 100%, 50%, 1),
+        4px 4px 0 hsla(0, 100%, 50%, 1), 
+        3px 3px 0 hsla(0, 100%, 50%, 1), 
+        2px 2px 0 hsla(0, 100%, 50%, 1), 
+        1px 1px 0 hsla(0, 100%, 50%, 1);
+    }
+    50% {
+      text-shadow:
+        -4px 4px 0 hsla(0, 100%, 50%, 1), 
+        -3px 3px 0 hsla(0, 100%, 50%, 1), 
+        -2px 2px 0 hsla(0, 100%, 50%, 1), 
+        -1px 1px 0 hsla(0, 100%, 50%, 1),
+        4px -4px 0 hsla(180, 100%, 50%, 1), 
+        3px -3px 0 hsla(180, 100%, 50%, 1), 
+        2px -2px 0 hsla(180, 100%, 50%, 1), 
+        1px -1px 0 hsla(180, 100%, 50%, 1);
+    }
+    75% {
+      text-shadow:
+        4px 4px 0 hsla(180, 100%, 50%, 1), 
+        3px 3px 0 hsla(180, 100%, 50%, 1), 
+        2px 2px 0 hsla(180, 100%, 50%, 1), 
+        1px 1px 0 hsla(180, 100%, 50%, 1),
+        -4px -4px 0 hsla(0, 100%, 50%, 1), 
+        -3px -3px 0 hsla(0, 100%, 50%, 1), 
+        -2px -2px 0 hsla(0, 100%, 50%, 1), 
+        -1px -1px 0 hsla(0, 100%, 50%, 1);
+    }
+    100% {
+      text-shadow:
+        4px -4px 0 hsla(0, 100%, 50%, 1), 
+        3px -3px 0 hsla(0, 100%, 50%, 1), 
+        2px -2px 0 hsla(0, 100%, 50%, 1), 
+        1px -1px 0 hsla(0, 100%, 50%, 1),
+        -4px 4px 0 hsla(180, 100%, 50%, 1), 
+        -3px 3px 0 hsla(180, 100%, 50%, 1), 
+        -2px 2px 0 hsla(180, 100%, 50%, 1), 
+        -1px 1px 0 hsla(180, 100%, 50%, 1);
+    }  
+}
+
+.nav-pills-custom .nav-link {
+    color: rgb(14, 13, 13);
+    background: #fff;
+    position: relative;
+}
+.nav-pills-custom .nav-link.active {
+    color:#3bfcfc;
+    background:  #e63131;
+}
+
+/* Add indicator arrow for the active tab */
+@media (min-width: 992px) {
+    .nav-pills-custom .nav-link::before {
+        content: '';
+        display: block;
+        border-top: 8px solid transparent;
+        border-left: 10px solid #fff;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        transform: translateY(-50%);
+        opacity: 0;
+    }  
+}
+.nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+}
+/*Fin de settings generales*/
+
+/*Tab Horizontal de lenguajes*/
+h2{
+    color:#000;
+    text-align:center;
+    font-size:2em;
+}
+.warpper{
+    display:flex;
+    flex-direction: column;
+    align-items: left;
+}
+.tab{
+    cursor: pointer;
+    padding:10px 20px;
+    margin:0px 2px;
+    background:#000;
+    display:inline-block;
+    color:#fff;
+    border-radius:3px 3px 0px 0px;
+    box-shadow: 0 0.5rem 0.8rem #00000080;
+    
+    
+}
+.panels{
+    background:#fffffff6;
+    width:100%;   
+    border-radius:3px;
+    overflow:hidden;
+    padding:20px;  
+}
+.panel{
+    display:none;
+    animation: fadein .8s;
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+.panel-title{
+    font-size:1.5em;
+    font-weight:bold
+}
+.radio{
+    display:none;
+}
+#one:checked ~ .panels #one-panel,
+#two:checked ~ .panels #two-panel,
+#three:checked ~ .panels #three-panel{
+    display:block
+}
+#one:checked ~ .tabs #one-tab,
+#two:checked ~ .tabs #two-tab,
+#three:checked ~ .tabs #three-tab{
+    background:#fffffff6;
+    color:#000;
+    border-top: 3px solid #000;
+}
+/*Fin Tab Horizontal de lenguajes*/
+  
+

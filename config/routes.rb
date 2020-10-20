@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   resources :algorithms, only: [:show]
   resources :about_us, only: [:index]
+  
 end
