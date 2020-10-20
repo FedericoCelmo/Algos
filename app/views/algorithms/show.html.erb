@@ -2,10 +2,6 @@
     Algos | <%= @algorithm.name %> 
 <% end %>
 
-<% content_for :head do %>
-    <%= stylesheet_link_tag    'algorithms_controller', media: 'all', 'data-turbolinks-track': 'reload' %>
-<% end %>
-
 <div class="container-fluid">   
   <%= render "algorithms/#{@algorithm.id}", name: @algorithm.name, descripcion: "Esto es un algoritmo de ordenación"%>
 </div>
