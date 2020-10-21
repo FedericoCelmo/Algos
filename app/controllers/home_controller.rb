@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
     def home
-        Rails.application.config.assets.precompile += %w( home.css )
+        @algorithms = Algorithm.all
     end
 end

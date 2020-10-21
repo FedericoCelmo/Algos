@@ -10,95 +10,64 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
-//= require_tree .
-//= require jquery 
-//= require jquery_ujs 
+//= require jquery
 //= require app
 //= require home
+//= require rails-ujs
+//= require activestorage
 
-console.log('Hello from application.js')
-function menu() {
+$(document).ready(function() {
+    $(".hamburger-menu").click(function() {
+        if ($(".one").hasClass("one-rotate")) { // try .hasCLass
+            $(".one").addClass("one-rotate-back").removeClass("one-rotate");
+        } else {
+            $(".one").addClass("one-rotate").removeClass("one-rotate-back");
+        }
 
-  
+        if ($(".three").hasClass("three-rotate")) {
+            $(".three").addClass("three-rotate-back").removeClass("three-rotate");
+        } else {
+            $(".three").addClass("three-rotate").removeClass("three-rotate-back");
+        }
+        $(".slide-down-menu").slideToggle();
+        $(".two").toggleClass("hide", 300);
+    });
 
-  console.log('Se ha ejecutado menu')
-  $(document).on('turbolinks:load',function() {
- 
-    checkDivWidth960px();
-    checkDivWidth560px();
-    $(window).resize(checkDivWidth960px, checkDivWidth560px);
-  });
-  
-  
-  $(".slide-down-menu").hide(); 
-  
-  $(".header-logo-hidden").hide();
-  $(".header-logo").mouseenter(function() {
-    $(this).hide();
-    $(".header-logo-hidden").show();
-  });
-  $(".header-logo-hidden").mouseleave(function() {
-    $(this).hide();
-    $(".header-logo").show();
-  });
-  
-  
-  $(".hamburger-menu").click(function() {
-  
-    if ($(".one").hasClass("one-rotate")) { // try .hasCLass
-      $(".one").addClass("one-rotate-back").removeClass("one-rotate");
-    } else {
-      $(".one").addClass("one-rotate").removeClass("one-rotate-back");
-    }
-  
-    if ($(".three").hasClass("three-rotate")) {
-      $(".three").addClass("three-rotate-back").removeClass("three-rotate");
-    } else {
-      $(".three").addClass("three-rotate").removeClass("three-rotate-back");
-    }
-  
-    $(".slide-down-menu").slideToggle();
-    $(".two").toggleClass("hide", 300);
-  });
-   
-  
-  //========== For Media Queries ==========
-  
-  function checkDivWidth960px(){
-    if ($(".locations-header").width() < 960 ){
-  
-      $(".slide-down-menu li").hide();
-   
-      $(".slide-down-menu ul:nth-child(1) h2").click(function(){
-        $(".slide-down-menu ul:nth-child(1) li").toggle();
-        $(".slide-down-menu ul:nth-child(2) li").hide();
-        $(".slide-down-menu ul:nth-child(3) li").hide();
-        $(".slide-down-menu ul:nth-child(4) li").hide();
-      });
-      $(".slide-down-menu ul:nth-child(2) h2").click(function(){
-        $(".slide-down-menu ul:nth-child(2) li").toggle();
-        $(".slide-down-menu ul:nth-child(1) li").hide();
-        $(".slide-down-menu ul:nth-child(3) li").hide();
-        $(".slide-down-menu ul:nth-child(4) li").hide();
-      });
-      $(".slide-down-menu ul:nth-child(3) h2").click(function(){
-        $(".slide-down-menu ul:nth-child(3) li").toggle();
-        $(".slide-down-menu ul:nth-child(1) li").hide();
-        $(".slide-down-menu ul:nth-child(2) li").hide();
-        $(".slide-down-menu ul:nth-child(4) li").hide();
-      });
-      $(".slide-down-menu ul:nth-child(4) h2").click(function(){
-        $(".slide-down-menu ul:nth-child(4) li").toggle();
-        $(".slide-down-menu ul:nth-child(1) li").hide();
-        $(".slide-down-menu ul:nth-child(2) li").hide();
-        $(".slide-down-menu ul:nth-child(3) li").hide();
-      });
-    }
-  }
-   
+    $(".slide-down-menu").hide();
+
+    $(".header-logo-hidden").hide();
+    $(".header-logo").mouseenter(function() {
+        $(this).hide();
+        $(".header-logo-hidden").show();
+    });
+    $(".header-logo-hidden").mouseleave(function() {
+        $(this).hide();
+        $(".header-logo").show();
+    });
+
+    $('.custom-dropdown a:first').hover(function () {
+        if ($('.custom-dropdown-content').is(':visible')) {
+            $(this).addClass('active');
+        } else {
+            $(this).removeClass('active');
+        }
+    });
+
+    $('.custom-dropdown-content').hover(function () {
+        $('.custom-dropdown a:first').addClass('active');
+    }, function () {
+        $('.custom-dropdown a:first').removeClass('active');
+    });
+
+    setCustomWidth();
+    $(window).resize(function () {
+        setCustomWidth();
+    });
+});
+
+function setCustomWidth() {
+    var distanceWithTop = $('.slide-down-menu').height();
+    $('.custom-dropdown-content').css('margin-top', distanceWithTop);
 }
   
   

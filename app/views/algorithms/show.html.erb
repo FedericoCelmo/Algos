@@ -1,0 +1,7 @@
+<% content_for :title do %>
+    Algos | <%= @algorithm.name %> 
+<% end %>
+
+<div class="container-fluid">   
+  <%= render "algorithms/#{@algorithm.id}", name: @algorithm.name, descripcion: "Esto es un algoritmo de ordenación"%>
+</div>
