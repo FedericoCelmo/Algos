@@ -27,7 +27,6 @@
 /config/master.key
 
 /public/
-# /Gemfile.lock
 /db/schema.rb
 /.ruby-version
 /test/
