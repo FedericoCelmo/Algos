@@ -1,4 +1,243 @@
 <div class="container-fluid">
-<h1><%= name %></h1>
-<h1><%= descripcion %></h1>
+    <h1><%= name %></h1>
 </div>
+
+<div class="row">
+    <div class="col-md-3">
+        <!-- Tabs nav -->
+        <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a title="Descripción" class="nav-link mb-3 p-3 shadow active" id="descripcion" data-toggle="pill" href="#v-pills-descripcion" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                <i class="fa fa-align-justify"></i>
+                <span class="font-weight-bold small text-uppercase">Descripción</span></a>
+
+            <a title="¿Como funciona?" class="nav-link mb-3 p-3 shadow" id="funcionamiento" data-toggle="pill" href="#v-pills-funcionamiento" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                <i class="fa fa-power-off"></i>
+                <span class="font-weight-bold small text-uppercase">Funcionamiento</span></a>
+
+            <a title="Pseudo-Código" class="nav-link mb-3 p-3 shadow" id="p-codigo" data-toggle="pill" href="#v-pills-p-codigo" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+                <i class="fa fa-list-alt"></i>
+                <span class="font-weight-bold small text-uppercase">Pseudo-Código</span></a>
+
+            <a title="Códigos en los principales lenguajes" class="nav-link mb-3 p-3 shadow" id="codigo" data-toggle="pill" href="#v-pills-codigo" role="tab" aria-controls="v-pills-codigo" aria-selected="false">
+                <i class="fa fa-code"></i>
+                <span class="font-weight-bold small text-uppercase">Código</span></a>
+
+            <a title="Animación" class="nav-link mb-3 p-3 shadow" id="animacion" data-toggle="pill" href="#v-pills-animacion" role="tab" aria-controls="v-pills-animacion" aria-selected="false">
+                <i class="fa fa-play-circle"></i>
+                <span class="font-weight-bold small text-uppercase">Animación</span></a>
+
+            <a title="Visualizar videos" class="nav-link mb-3 p-3 shadow" id="video" data-toggle="pill" href="#v-pills-video" role="tab" aria-controls="v-pills-video" aria-selected="false">
+                <i class="fa fa-play"></i>
+                <span class="font-weight-bold small text-uppercase">Videos</span></a>
+
+            <a title="Bibliografía utilizada" class="nav-link mb-3 p-3 shadow" id="biblio" data-toggle="pill" href="#v-pills-biblio" role="tab" aria-controls="v-pills-biblio" aria-selected="false">
+                <i class="fa fa-book"></i>
+                <span class="font-weight-bold small text-uppercase">Bibliografía</span></a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <!-- Tabs content -->
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-descripcion" role="tabpanel" aria-labelledby="descripcion">
+                <h4 class="font-italic mb-4">Descripción</h4>
+                <p class="font-italic text-muted mb-2">
+                    <img src="<%= asset_path 'shell-sort-main.png' %>" width="200" alt="" class="img" id="img-algo">
+                <p></p>
+                <div id="texto-descripcion">
+                   La ordenación Shell o Shell sort, también conocida como ordenación de incremento decreciente, 
+                   es uno de los algoritmos de ordenamiento más antiguos, que lleva el nombre de su inventor 
+                   Donald. L. Shell (1959). Es rápido, fácil de entender y de implementar. Sin embargo, su análisis 
+                   de complejidad es un poco más sofisticado.
+                   La idea del ordenamiento Shell es la siguiente:
+                   <p></p>
+                   <li>
+                   Organizar la secuencia de datos en un arreglo bidimensional (Matriz).
+                   </li>
+                   <li>
+                   Ordenar las columnas del arreglo.
+                   </li>
+                </div>
+                </p>
+            </div>
+
+            <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-funcionamiento" role="tabpanel" aria-labelledby="funcionamiento">
+                <h4 class="font-italic mb-4">Funcionamiento</h4>
+                <p class="font-italic text-muted mb-2">
+
+                <main>
+                    <ol class="gradient-list">
+                        <li>
+                            Consideremos el siguiente ejemplo para tener una idea de cómo funciona la ordenación shell. 
+                            Para facilitar la comprensión, tomamos el intervalo de 4. Se hace una sublista virtual de todos 
+                            los valores ubicados en el intervalo de 4 posiciones. Aquí estos valores son {35, 14}, {33, 19}, {42, 27} y {10, 44}.
+
+                            <img src="<%= asset_path 'shell-funcionamiento-01.png' %>" alt="" class="img" id="img-algo-f">
+                        </li>
+                        <li>
+                            Comparamos los valores en cada sublista y los intercambiamos (si es necesario) en el arreglo original. 
+                            Después de este paso, el nuevo arreglo debería verse así:
+                            <img src="<%= asset_path 'shell-funcionamiento-02.png' %>" alt="" class="img" id="img-algo-f">
+                        </li>
+                        <li>
+                            Luego, tomamos el intervalo de 1 y esta brecha genera dos sublistas: {14, 27, 35, 42}, {19, 10, 33, 44}.
+                            <img src="<%= asset_path 'shell-funcionamiento-03.png' %>" alt="" class="img" id="img-algo-f">
+                        </li>
+                        <li>
+                            Comparamos e intercambiamos los valores, si es necesario, en el arreglo original. Después de este paso, 
+                            el arreglo debería verse así:
+                            <img src="<%= asset_path 'shell-funcionamiento-04.png' %>" alt="" class="img" id="img-algo-f">
+                        </li>
+                        <li>                           
+                            Finalmente, ordenamos el resto del arreglo usando el intervalo de valor 1. 
+                            Este algoritmo usa la ordenación por inserción para ordenar el arreglo.
+                            A continuación se muestra la descripción paso a paso:
+                            <img src="<%= asset_path 'shell-funcionamiento-05.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-06.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-07.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-08.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-09.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-10.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-11.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-12.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-13.png' %>" alt="" class="img" id="img-algo-f">
+                            <img src="<%= asset_path 'shell-funcionamiento-14.png' %>" alt="" class="img" id="img-algo-f">
+                        </li>
+                        <li>
+                            Vemos que solo se requirió cuatro intercambios para ordenar el resto del arreglo.                      
+                        </li>
+                        
+                    </ol>
+                </main>
+                </p>
+            </div>
+
+            <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-p-codigo" role="tabpanel" aria-labelledby="p-codigo">
+                <h4 class="font-italic mb-4">Pseudo-Código</h4>
+                <div id="texto-descripcion">
+                    Algoritmo del Shellsort, donde n corresponde al número total de elementos a ordenar y 
+                    L es originalmente el arreglo desordenado.
+                </div>
+                <p class="font-italic text-muted mb-2">
+                    <script src="https://gist.github.com/FedericoCelmo/d8de33ad35085f8c31aedf3fa9145d9c.js"></script>
+                </p>
+            </div>
+
+            <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-codigo" role="tabpanel" aria-labelledby="codigo">
+                <h4 class="font-italic mb-4">Código</h4>
+                <p class="font-italic text-muted mb-2">
+                <div class="warpper">
+                    <input class="radio" id="one" name="group" type="radio" checked>
+                    <input class="radio" id="two" name="group" type="radio">
+                    <input class="radio" id="three" name="group" type="radio">
+                    <div class="tabs">
+                        <label class="tab" id="one-tab" for="one">Java</label>
+                        <label class="tab" id="two-tab" for="two">Python</label>
+                        <label class="tab" id="three-tab" for="three">C</label>
+                    </div>
+                    <div class="panels">
+                        <div class="panel" id="one-panel">
+                            <div class="panel-title">Código en Java</div>
+                            <p>
+                                <script src="https://gist.github.com/FedericoCelmo/cf6caa9ea09cfb53437220eae0b0d24d.js"></script>
+                            </p>
+                        </div>
+                        <div class="panel" id="two-panel">
+                            <div class="panel-title">Código en Python</div>
+                            <p>
+                                <script src="https://gist.github.com/FedericoCelmo/e7b8baee3bf264a86bf8127724bbc00d.js"></script>
+                            </p>
+                        </div>
+                        <div class="panel" id="three-panel">
+                            <div class="panel-title">Código en C</div>
+                            <p>
+                                <script src="https://gist.github.com/FedericoCelmo/c55541d9d85f9af3f227316da7c58c99.js"></script>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+
+            <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-animacion" role="tabpanel" aria-labelledby="animacion">
+                <h4 class="font-italic mb-4">Animación</h4>
+                <p class="font-italic text-muted mb-2">
+                <div class="card">
+                    <div class="card-body">
+
+                        <section class="header">Bubble Sort</section>
+                        <button type="button" class="btn btn-success" id="btnPlay" title="Iniciar la animación"><i class="fa fa-play" id="iconoPlay"></i></button>
+                        <button type="button" class="btn btn-danger" id="btnStop" title="Detener la animación"><i class="fa fa-stop" id="iconoStop"></i></button>
+                        <button type="button" class="btn btn-warning" id="btnReiniciar" title="Reiniciar la animación"><i class="fa fa-reply" id="iconoReiniciar"></i></button>
+                        <section class="data-container"></section>
+
+                    </div>
+                </div>
+
+                </p>
+            </div>
+
+            <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-video" role="tabpanel" aria-labelledby="video">
+                <h4 class="font-italic mb-4">Videos</h4>
+                <p class="font-italic text-muted mb-2">
+
+                <div class="container" id="video-container">
+                    <button id="left-btn"><i class="arrow" title="Video anterior"></i></button>
+                    <iframe id="carousel" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <a id="id-video1" href="https://www.youtube.com/embed/bv8rxkcZ_-o"></a>
+                    <a id="id-video2" href="https://www.youtube.com/embed/ddeLSDsYVp8"></a>
+                    <a id="id-video3" href="https://www.youtube.com/embed/9GAtGHVRYh0"></a>
+                    <button id="right-btn"><i class="arrow" title="Video siguiente"></i></button>
+                </div>
+
+                </p>
+            </div>
+
+            <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-biblio" role="tabpanel" aria-labelledby="biblio">
+                <h4 class="font-italic mb-4">Bibliografía</h4>
+                <p class="font-italic text-muted mb-2">
+                <div id="texto-descripcion">
+
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-body p-5">
+                        <ul class="list-biblio list pl-5" id="list-biblio">
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-book" aria-hidden="true"></i>Cormen, T. H. (2013). Algorithms unlocked: Thomas H. Cormen. Cambridge: The Mit Press.
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-book" aria-hidden="true"></i>Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2009. Introduction to Algorithms, Third Edition (3rd. ed.). The MIT Press.
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://www.sanfoundry.com/c-program-implement-shell-sort/" <a>Sanfoundry: Shell sort </a> 
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://sites.google.com/site/shellsortalg/" <a>Google sites: Shell sort </a> 
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://www.geeksforgeeks.org/shellsort/" <a>Geeks for Geeks: Shell sort </a> 
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://users.dcc.uchile.cl/~bebustos/files/Bus99.pdf" <a>Universidad de Chile: Shell sort </a> 
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://riptutorial.com/algorithm/example/24649/shell-sort-basic-information" <a>Rip Tutorial: Shell sort </a> 
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://www.tutorialspoint.com/data_structures_algorithms/shell_sort_algorithm.htm" <a>Tutorials Point: Shell sort </a> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    </section>

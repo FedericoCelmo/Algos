@@ -42,15 +42,19 @@
             <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-descripcion" role="tabpanel" aria-labelledby="descripcion">
                 <h4 class="font-italic mb-4">Descripción</h4>
                 <p class="font-italic text-muted mb-2">
-                    <img src="<%= asset_path 'bubble-sort-main.png' %>" width="200" alt="" class="img" id="img-algo">
+                    <img src="<%= asset_path 'quick-sort-main.png' %>" width="200" alt="" class="img" id="img-algo">
                 <p></p>
                 <div id="texto-descripcion">
-                    Bubblesort es un algoritmo de ordenación muy popular, pero ineficaz.
-                    Funciona intercambiando repetidamente elementos adyacentes que están desordenados.
-                    Este algoritmo no es adecuado para grandes conjuntos de datos ya que su complejidad promedio y
-                    en el peor de los casos son de Ο(n2) donde n es el número total de elementos a ordenar.
+                    Éste algoritmo se basa en el principio de divide y conquistarás. Resulta más fácil ordenar arreglos pequeños que una grande,
+                    con lo cual irá descomponiendo el arreglo en dos partes y ordenando esas partes.
+                    <p></p>
+                    Para ésto utiliza la recursividad.
+                    <li>Dado un arreglo, elegir uno de sus elementos, al que llamamos pivot o pivote.</li>
+                    <li>Dividir el arreglo en dos subarreglos: uno con los elementos menores y el otro con los elementos mayores.</li>
+                    <li>Ordenar recursívamente ambos arreglos</li>
+                    <li>Armar el arreglo del resultado como: menoresOrdenados + pivot + mayoresOrdenados</li>
                 </div>
-                </p>               
+                </p>
             </div>
 
             <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-funcionamiento" role="tabpanel" aria-labelledby="funcionamiento">
@@ -60,58 +64,34 @@
                 <main>
                     <ol class="gradient-list">
                         <li>
-                            Para nuestro ejemplo tomamos una matriz sin ordenar. La ordenación de burbuja
-                            lleva Ο(n2) en tiempo computacional, por lo que el ejemplo es breve y preciso.
-                            <img src="<%= asset_path 'bubble-funcionamiento-01.png' %>" alt="" class="img" id="img-algo-f">
+                            Para nuestro ejemplo vamos a seleccionar el primer elemento del arreglo como el pivote.
+                            <img src="<%= asset_path 'quick-funcionamiento-01.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            Se comienza con los dos primeros elementos, comparándolos para comprobar cuál es mayor.
-                            <img src="<%= asset_path 'bubble-funcionamiento-02.png' %>" alt="" class="img" id="img-algo-f">
+                            Veamos entonces, paso a paso se va a ir formando este árbol de llamados recursivos. En amarillo mostramos el pivote.
+                            A izquierda las sublistas menores, y a la derecha la de los mayores.
+                            <img src="<%= asset_path 'quick-funcionamiento-02.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            En este caso, el valor 33 es mayor que 14, por lo que ya está ordenado.
-                            A continuación, comparamos 33 con 27.
-                            <img src="<%= asset_path 'bubble-funcionamiento-03.png' %>" alt="" class="img" id="img-algo-f">
+                            En verde están los nodos "caso base", es decir, es un subarreglo de un único elemento o bien un subarreglo vacío.
+                            Entonces estos nodos se van a resolver fácil y se van a concatenar con los pivotes de arriba.
+                            Así empezamos a volver en los llamados recursivos.
+                            <img src="<%= asset_path 'quick-funcionamiento-03.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            Encontramos que 27 es menor que 33 y estos dos valores deben intercambiarse.
-                            <img src="<%= asset_path 'bubble-funcionamiento-04.png' %>" alt="" class="img" id="img-algo-f">
+                            Si sacamos los subarreglos originales de cada nodo y solo dejamos los pivotes, queda más claro:
+                            <img src="<%= asset_path 'quick-funcionamiento-04.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            La nueva matriz debería verse así:
-                            <img src="<%= asset_path 'bubble-funcionamiento-05.png' %>" alt="" class="img" id="img-algo-f">
+                            Ya tenemos todo el tercer nivel resuelto así que cada par va a retornar para concatenarse entre sí con el pivote en el medio.
+                            <img src="<%= asset_path 'quick-funcionamiento-05.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            A continuación, comparamos 33 y 35. Encontramos que ambos están en posiciones ya ordenadas.
-                            <img src="<%= asset_path 'bubble-funcionamiento-06.png' %>" alt="" class="img" id="img-algo-f">
+                            Ya casi estamos. Tenemos dos subarreglos ordenados, la de los menores y la de los mayores, y el primer pivote.
+                            Concatenamos y eso nos da el resultado final:
+                            <img src="<%= asset_path 'quick-funcionamiento-06.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
-                        <li>
-                            Luego pasamos a los siguientes dos valores, 35 y 10.
-                            <img src="<%= asset_path 'bubble-funcionamiento-07.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Entonces sabemos que 10 es más pequeño que 35. Por lo tanto, no están ordenados.
-                            <img src="<%= asset_path 'bubble-funcionamiento-08.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Intercambiamos estos valores. Descubrimos que hemos llegado al final de la matriz.
-                            Después de una iteración, la matriz debería verse así:
-                            <img src="<%= asset_path 'bubble-funcionamiento-09.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Para ser precisos, ahora mostramos cómo debería verse una matriz después de cada iteración.
-                            Después de la segunda iteración, debería verse así:
-                            <img src="<%= asset_path 'bubble-funcionamiento-10.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Observe que después de cada iteración, al menos un valor se mueve al final.
-                            <img src="<%= asset_path 'bubble-funcionamiento-11.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Y cuando no se requiere algún intercambio más, las ordenaciones de burbuja están completas y
-                            por lo tanto, están ordenadas.
-                            <img src="<%= asset_path 'bubble-funcionamiento-12.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
+
                     </ol>
                 </main>
                 </p>
@@ -120,11 +100,11 @@
             <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-p-codigo" role="tabpanel" aria-labelledby="p-codigo">
                 <h4 class="font-italic mb-4">Pseudo-Código</h4>
                 <div id="texto-descripcion">
-                    Asumimos que la lista es una matriz de n elementos. Además, asumimos que la
-                    función de intercambio intercambia los valores de los elementos de la matriz dados.
+                    Este algoritmo recibe un arreglo de n elementos llamado A, las variables low y high son los índices extremos del arreglo.
+                    La función Partition particiona o divide el arreglo para que la función principal la ordene de menor a mayor.
                 </div>
                 <p class="font-italic text-muted mb-2">
-                    <script src="https://gist.github.com/FedericoCelmo/1532a68bec241b907698f29eb78592c1.js"></script>
+                    <script src="https://gist.github.com/FedericoCelmo/68fa65a91ac30c7006d76c578ae75b7f.js"></script>
                 </p>
             </div>
 
@@ -144,19 +124,19 @@
                         <div class="panel" id="one-panel">
                             <div class="panel-title">Código en Java</div>
                             <p>
-                                <script src="https://gist.github.com/FedericoCelmo/46d9fa0d108d9e7d4cdd9c48df2c80c1.js"></script>
+                                <script src="https://gist.github.com/FedericoCelmo/6f6e0e912ad91c1d17ea2a4e15c525eb.js"></script>
                             </p>
                         </div>
                         <div class="panel" id="two-panel">
                             <div class="panel-title">Código en Python</div>
                             <p>
-                                <script src="https://gist.github.com/FedericoCelmo/3270e666acbd4cac7fbd92c48984fa8b.js"></script>
+                                <script src="https://gist.github.com/FedericoCelmo/14833845ef3e7c3be38e54757d8f67f5.js"></script>
                             </p>
                         </div>
                         <div class="panel" id="three-panel">
                             <div class="panel-title">Código en C</div>
                             <p>
-                                <script src="https://gist.github.com/FedericoCelmo/197e8c28c5ca5f782277e270946926f9.js"></script>
+                                <script src="https://gist.github.com/FedericoCelmo/a52ca1c6322df2154667a156845d7ac0.js"></script>
                             </p>
                         </div>
                     </div>
@@ -169,13 +149,19 @@
                 <p class="font-italic text-muted mb-2">
                 <div class="card">
                     <div class="card-body">
-                        <section class="header">Bubble Sort</section>
-                        <button type="button" class="btn btn-success" id="btnPlay" title="Iniciar la animación"><i class="fa fa-play" id="iconoPlay"></i></button>
-                        <button type="button" class="btn btn-danger" id="btnStop" title="Detener la animación"><i class="fa fa-stop" id="iconoStop"></i></button>
-                        <button type="button" class="btn btn-warning" id="btnReiniciar" title="Reiniciar la animación"><i class="fa fa-reply" id="iconoReiniciar"></i></button>
-                        <section class="data-container"></section>
+
+                        <section class="header">Quick Sort</section>
+                        <button type="button" class="btn btn-success" id="btnPlayQuick" title="Iniciar la animación"><i class="fa fa-play" id="iconoPlay"></i></button>
+                        <button type="button" class="btn btn-danger" id="btnStopQuick" title="Detener la animación"><i class="fa fa-stop" id="iconoStop"></i></button>
+                        <button type="button" class="btn btn-warning" id="btnReiniciarQuick" title="Reiniciar la animación"><i class="fa fa-reply" id="iconoReiniciar"></i></button>
+                        <section id="container">                                                 
+                            <div id="quick">
+                                <div id="quick-list">                                                                        
+                                </div>
+                            </div>                                              
+                        </section>                        
                         <script>
-                            new BubbleView();
+                            new QuickView();
                         </script>
                     </div>
                 </div>
@@ -190,9 +176,9 @@
                 <div class="container" id="video-container">
                     <button id="left-btn"><i class="arrow" title="Video anterior"></i></button>
                     <iframe id="carousel" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <a id="id-video1" href="https://www.youtube.com/embed/vnnL17I7pIY"></a>
-                    <a id="id-video2" href="https://www.youtube.com/embed/xli_FI7CuzA"></a>
-                    <a id="id-video3" href="https://www.youtube.com/embed/zVjZdrh3tSA"></a>
+                    <a id="id-video1" href="https://www.youtube.com/embed/YzHDIvxOQcI"></a>
+                    <a id="id-video2" href="https://www.youtube.com/embed/Hoixgm4-P4M"></a>
+                    <a id="id-video3" href="https://www.youtube.com/embed/xaFvKzmU-kQ"></a>
                     <button id="right-btn"><i class="arrow" title="Video siguiente"></i></button>
                 </div>
 
@@ -203,6 +189,7 @@
                 <h4 class="font-italic mb-4">Bibliografía</h4>
                 <p class="font-italic text-muted mb-2">
                 <div id="texto-descripcion">
+
                 </div>
 
                 <div class="card shadow mb-4">
@@ -215,12 +202,19 @@
                                 <i class="fa fa-book" aria-hidden="true"></i>Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2009. Introduction to Algorithms, Third Edition (3rd. ed.). The MIT Press.
                             </li>
                             <li class="mb-3 d-flex">
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                                <a title="Visitar página web" href="https://www.tutorialspoint.com/data_structures_algorithms/bubble_sort_algorithm.htm" <a>Estrutura de datos: Bubble sort </a> 
+                                <i class="fa fa-book" aria-hidden="true"></i>Jon Kleinberg and Eva Tardos. 2005. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA
                             </li>
                             <li class="mb-3 d-flex">
                                 <i class="fa fa-link" aria-hidden="true"></i>
-                                <a title="Visitar página web" href="https://sites.google.com/site/programacioniiuno/temario/unidad-6---anlisis-de-algoritmos/algoritmo-bubblesort" <a>Google sites: Bubble sort </a> 
+                                <a title="Visitar página web" href="https://www.geeksforgeeks.org/quick-sort/" <a>Geeks For Geeks: Quick sort </a>
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://algorithmist.com/wiki/Quicksort" <a>Algorithmist: Quick sort </a>
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://sites.google.com/site/programacioniiuno/temario/unidad-6---anlisis-de-algoritmos/algoritmo-quicksort" <a>Google Sites: Quick sort </a>
                             </li>
                         </ul>
                     </div>

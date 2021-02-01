@@ -42,15 +42,14 @@
             <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-descripcion" role="tabpanel" aria-labelledby="descripcion">
                 <h4 class="font-italic mb-4">Descripción</h4>
                 <p class="font-italic text-muted mb-2">
-                    <img src="<%= asset_path 'bubble-sort-main.png' %>" width="200" alt="" class="img" id="img-algo">
+                    <img src="<%= asset_path 'merge-sort-main.png' %>" width="200" alt="" class="img" id="img-algo">
                 <p></p>
                 <div id="texto-descripcion">
-                    Bubblesort es un algoritmo de ordenación muy popular, pero ineficaz.
-                    Funciona intercambiando repetidamente elementos adyacentes que están desordenados.
-                    Este algoritmo no es adecuado para grandes conjuntos de datos ya que su complejidad promedio y
-                    en el peor de los casos son de Ο(n2) donde n es el número total de elementos a ordenar.
+                    Merge sort es una técnica de ordenación basada en la técnica de dividir y conquistar, fue creado por John von Neumann (1945).
+                    Dado que la complejidad del tiempo computacional en el peor de los casos es Ο(n log n), es uno de los algoritmos más respetados y por ende, es muy eficiente.
+                    Merge sort primero divide el arreglo en mitades iguales y luego las combina de manera ordenada.
                 </div>
-                </p>               
+                </p>
             </div>
 
             <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-funcionamiento" role="tabpanel" aria-labelledby="funcionamiento">
@@ -60,58 +59,42 @@
                 <main>
                     <ol class="gradient-list">
                         <li>
-                            Para nuestro ejemplo tomamos una matriz sin ordenar. La ordenación de burbuja
-                            lleva Ο(n2) en tiempo computacional, por lo que el ejemplo es breve y preciso.
-                            <img src="<%= asset_path 'bubble-funcionamiento-01.png' %>" alt="" class="img" id="img-algo-f">
+                            Para entender la ordenación por unión o merge sort, tomamos un arreglo sin ordenar como el siguiente:
+                            <img src="<%= asset_path 'merge-funcionamiento-01.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            Se comienza con los dos primeros elementos, comparándolos para comprobar cuál es mayor.
-                            <img src="<%= asset_path 'bubble-funcionamiento-02.png' %>" alt="" class="img" id="img-algo-f">
+                            Sabemos que merge sort primero divide el arreglo completo de forma iterativa en mitades
+                            iguales. Vemos aquí que un arreglo de 8 elementos que se divide
+                            en dos subarreglos de tamaño 4.
+                            <img src="<%= asset_path 'merge-funcionamiento-02.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            En este caso, el valor 33 es mayor que 14, por lo que ya está ordenado.
-                            A continuación, comparamos 33 con 27.
-                            <img src="<%= asset_path 'bubble-funcionamiento-03.png' %>" alt="" class="img" id="img-algo-f">
+                            Esto no cambia la secuencia de aparición de los elementos en el arreglo original. Ahora dividimos estos dos subarreglos en mitades.
+                            <img src="<%= asset_path 'merge-funcionamiento-03.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            Encontramos que 27 es menor que 33 y estos dos valores deben intercambiarse.
-                            <img src="<%= asset_path 'bubble-funcionamiento-04.png' %>" alt="" class="img" id="img-algo-f">
+                            Dividimos aún más estos subarreglos hasta que ya no se puedan dividir.
+                            <img src="<%= asset_path 'merge-funcionamiento-04.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            La nueva matriz debería verse así:
-                            <img src="<%= asset_path 'bubble-funcionamiento-05.png' %>" alt="" class="img" id="img-algo-f">
+                            Ahora, los combinamos exactamente de la misma manera en que se desglosaron, es decir, se empezaran a unir de nuevo.
+                            Para entender mejor el ejemplo, se le asignaron difirentes colores a los subarreglos.
+                            <p></p>
+                            Primero comparamos los elementos de cada subarreglo y luego los combinamos en otro subarreglo de manera ordenada.
+                            Vemos que 14 y 33 están en posiciones ordenadas. Comparamos 27 y 10, y en el subarreglo objetivo de 2 valores,
+                            colocamos el 10 primero, seguido del 27. Cambiamos el orden de 19 y 35 mientras que 42 y 44 se colocan secuencialmente.
+                            <img src="<%= asset_path 'merge-funcionamiento-05.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            A continuación, comparamos 33 y 35. Encontramos que ambos están en posiciones ya ordenadas.
-                            <img src="<%= asset_path 'bubble-funcionamiento-06.png' %>" alt="" class="img" id="img-algo-f">
+                            En la siguiente iteración de la fase de combinación, comparamos los subarreglos de dos valores de datos y los 
+                            fusionamos en un subarreglo de cuatro datos colocándolos todos en un orden ordenado.
+                            <img src="<%= asset_path 'merge-funcionamiento-06.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
                         <li>
-                            Luego pasamos a los siguientes dos valores, 35 y 10.
-                            <img src="<%= asset_path 'bubble-funcionamiento-07.png' %>" alt="" class="img" id="img-algo-f">
+                            Después de la unión final, el arreglo debería ordenado verse así:
+                            <img src="<%= asset_path 'merge-funcionamiento-07.png' %>" alt="" class="img" id="img-algo-f">
                         </li>
-                        <li>
-                            Entonces sabemos que 10 es más pequeño que 35. Por lo tanto, no están ordenados.
-                            <img src="<%= asset_path 'bubble-funcionamiento-08.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Intercambiamos estos valores. Descubrimos que hemos llegado al final de la matriz.
-                            Después de una iteración, la matriz debería verse así:
-                            <img src="<%= asset_path 'bubble-funcionamiento-09.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Para ser precisos, ahora mostramos cómo debería verse una matriz después de cada iteración.
-                            Después de la segunda iteración, debería verse así:
-                            <img src="<%= asset_path 'bubble-funcionamiento-10.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Observe que después de cada iteración, al menos un valor se mueve al final.
-                            <img src="<%= asset_path 'bubble-funcionamiento-11.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
-                        <li>
-                            Y cuando no se requiere algún intercambio más, las ordenaciones de burbuja están completas y
-                            por lo tanto, están ordenadas.
-                            <img src="<%= asset_path 'bubble-funcionamiento-12.png' %>" alt="" class="img" id="img-algo-f">
-                        </li>
+                        
                     </ol>
                 </main>
                 </p>
@@ -120,11 +103,11 @@
             <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-p-codigo" role="tabpanel" aria-labelledby="p-codigo">
                 <h4 class="font-italic mb-4">Pseudo-Código</h4>
                 <div id="texto-descripcion">
-                    Asumimos que la lista es una matriz de n elementos. Además, asumimos que la
-                    función de intercambio intercambia los valores de los elementos de la matriz dados.
+                    Este algoritmo recibe un arreglo de n elementos llamado arr, las variables left y
+                    right son los índices extremos del arreglo.
                 </div>
                 <p class="font-italic text-muted mb-2">
-                    <script src="https://gist.github.com/FedericoCelmo/1532a68bec241b907698f29eb78592c1.js"></script>
+                    <script src="https://gist.github.com/FedericoCelmo/b4dd225e3360959adb0c3ebd95dc7ba4.js"></script>
                 </p>
             </div>
 
@@ -144,19 +127,19 @@
                         <div class="panel" id="one-panel">
                             <div class="panel-title">Código en Java</div>
                             <p>
-                                <script src="https://gist.github.com/FedericoCelmo/46d9fa0d108d9e7d4cdd9c48df2c80c1.js"></script>
+                                <script src="https://gist.github.com/FedericoCelmo/aee313d511f7cd09e8f85c81f532a485.js"></script>
                             </p>
                         </div>
                         <div class="panel" id="two-panel">
                             <div class="panel-title">Código en Python</div>
                             <p>
-                                <script src="https://gist.github.com/FedericoCelmo/3270e666acbd4cac7fbd92c48984fa8b.js"></script>
+                                <script src="https://gist.github.com/FedericoCelmo/415efdbff26f4e5612878b67bcb84d2a.js"></script>
                             </p>
                         </div>
                         <div class="panel" id="three-panel">
                             <div class="panel-title">Código en C</div>
                             <p>
-                                <script src="https://gist.github.com/FedericoCelmo/197e8c28c5ca5f782277e270946926f9.js"></script>
+                                <script src="https://gist.github.com/FedericoCelmo/20feab1b37243cc75764dc75ce292467.js"></script>
                             </p>
                         </div>
                     </div>
@@ -169,14 +152,13 @@
                 <p class="font-italic text-muted mb-2">
                 <div class="card">
                     <div class="card-body">
+
                         <section class="header">Bubble Sort</section>
                         <button type="button" class="btn btn-success" id="btnPlay" title="Iniciar la animación"><i class="fa fa-play" id="iconoPlay"></i></button>
                         <button type="button" class="btn btn-danger" id="btnStop" title="Detener la animación"><i class="fa fa-stop" id="iconoStop"></i></button>
                         <button type="button" class="btn btn-warning" id="btnReiniciar" title="Reiniciar la animación"><i class="fa fa-reply" id="iconoReiniciar"></i></button>
                         <section class="data-container"></section>
-                        <script>
-                            new BubbleView();
-                        </script>
+
                     </div>
                 </div>
 
@@ -190,9 +172,9 @@
                 <div class="container" id="video-container">
                     <button id="left-btn"><i class="arrow" title="Video anterior"></i></button>
                     <iframe id="carousel" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <a id="id-video1" href="https://www.youtube.com/embed/vnnL17I7pIY"></a>
-                    <a id="id-video2" href="https://www.youtube.com/embed/xli_FI7CuzA"></a>
-                    <a id="id-video3" href="https://www.youtube.com/embed/zVjZdrh3tSA"></a>
+                    <a id="id-video1" href="https://www.youtube.com/embed/kOgzXagXpTg"></a>
+                    <a id="id-video2" href="https://www.youtube.com/embed/4VqmGXwpLqc"></a>
+                    <a id="id-video3" href="https://www.youtube.com/embed/xEJ6I0X_jeE"></a>
                     <button id="right-btn"><i class="arrow" title="Video siguiente"></i></button>
                 </div>
 
@@ -203,6 +185,7 @@
                 <h4 class="font-italic mb-4">Bibliografía</h4>
                 <p class="font-italic text-muted mb-2">
                 <div id="texto-descripcion">
+
                 </div>
 
                 <div class="card shadow mb-4">
@@ -215,12 +198,19 @@
                                 <i class="fa fa-book" aria-hidden="true"></i>Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein. 2009. Introduction to Algorithms, Third Edition (3rd. ed.). The MIT Press.
                             </li>
                             <li class="mb-3 d-flex">
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                                <a title="Visitar página web" href="https://www.tutorialspoint.com/data_structures_algorithms/bubble_sort_algorithm.htm" <a>Estrutura de datos: Bubble sort </a> 
+                                <i class="fa fa-book" aria-hidden="true"></i>Jon Kleinberg and Eva Tardos. 2005. Algorithm Design. Addison-Wesley Longman Publishing Co., Inc., USA
                             </li>
                             <li class="mb-3 d-flex">
                                 <i class="fa fa-link" aria-hidden="true"></i>
-                                <a title="Visitar página web" href="https://sites.google.com/site/programacioniiuno/temario/unidad-6---anlisis-de-algoritmos/algoritmo-bubblesort" <a>Google sites: Bubble sort </a> 
+                                <a title="Visitar página web" href="https://www.geeksforgeeks.org/merge-sort/" <a>Geeks For Geeks: Merge sort </a>
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://www.mygreatlearning.com/blog/merge-sort/" <a>My Great Learning: Merge sort </a>
+                            </li>
+                            <li class="mb-3 d-flex">
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                                <a title="Visitar página web" href="https://www.tutorialspoint.com/data_structures_algorithms/merge_sort_algorithm.htm" <a>Tutorials Point: Merge sort </a>
                             </li>
                         </ul>
                     </div>
